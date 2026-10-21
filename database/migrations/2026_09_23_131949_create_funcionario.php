@@ -14,11 +14,13 @@ return new class extends Migration
         Schema::create('funcionario', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->string('email')->unique();
-            $table->string('senha');
             $table->string('cpf', 11)->unique();
-            $table->string('nif', 9)->unique();
             $table->date('data_nascimento');
+            $table->string('email')->unique();
+            $table->string('nif', 9)->unique();
+            $table->string('senha');
+            $table->unsignedBigInteger('usuario_id')->nullable();
+            $table->foreign('usuario_id')->references('id')->on('usuario')->onDelete('set null');
             $table->timestamps();
         });
     }
@@ -30,8 +32,8 @@ return new class extends Migration
     {
 
         Schema::table('funcionario', function (Blueprint $table) {
-            $table->dropForeign(['usuario_id']);
-            $table->dropColumn('usuario_id');
+         //   $table->dropForeign(['usuario_id']);
+         //   $table->dropColumn('usuario_id');
         });
 
         Schema::dropIfExists('funcionario');

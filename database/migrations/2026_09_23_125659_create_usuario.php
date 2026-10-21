@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('usuario', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->string('email')->unique();
-            $table->text('senha');
             $table->string('cpf', 11)->unique();
             $table->date('data_nascimento')->nullable();
+            $table->string('email')->unique();
+            $table->text('senha');
             $table->timestamps();
         });
     }

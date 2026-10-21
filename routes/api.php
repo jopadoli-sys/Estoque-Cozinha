@@ -22,9 +22,9 @@ Route::delete('/deletar_usuarios', [UsuarioController::class, 'deletar_usuarios'
 
 
 
-Route::get('/cadastrar_funcionarios', [FuncionarioController::class, 'cadastrar_funcionarios_html']);
+Route::post('/cadastrar_funcionarios', [FuncionarioController::class, 'cadastrar_funcionarios_html']);
 
-Route::post('/ver_funcionarios', [FuncionarioController::class, 'ver_funcionarios']);
+Route::get('/ver_funcionarios', [FuncionarioController::class, 'ver_funcionarios']);
 
 Route::get('/listar_funcionarios', [FuncionarioController::class, 'listar_funcionarios']);
 
@@ -36,9 +36,9 @@ Route::delete('/deletar_funcionarios', [FuncionarioController::class, 'deletar_f
 
 
 
-Route::get('/cadastrar_produtos', [ProdutosController::class, 'cadastrar_produtos_html']);
+Route::post('/cadastrar_produtos', [ProdutosController::class, 'cadastrar_produtos_html']);
 
-Route::post('/ver_produtos', [ProdutosController::class, 'ver_produtos']);
+Route::get('/ver_produtos', [ProdutosController::class, 'ver_produtos']);
 
 Route::get('/listar_produtos', [ProdutosController::class, 'listar_produtos']);
 
@@ -47,3 +47,17 @@ Route::get('/listar_produtos_simples', [ProdutosController::class, 'listar_produ
 Route::put('/alterar_produtos', [ProdutosController::class, 'alterar_produtos']);
 
 Route::delete('/deletar_produtos', [ProdutosController::class, 'deletar_produtos']);
+
+
+
+Route::post('/cadastrar_estoque', [EstoqueController::class, 'cadastro_estoque_html']);
+
+Route::get('/ver_estoque', [EstoqueController::class, 'ver_estoque']);
+
+Route::get('/listar_estoque', [EstoqueController::class, 'listar_estoque']);
+
+Route::get('/listar_estoque_simples', [EstoqueController::class, 'listar_estoque_simples']);
+
+Route::put('/alterar_estoque', [EstoqueController::class, 'alterar_estoque']);
+
+Route::delete('/deletar_estoque', [EstoqueController::class, 'deletar_estoque']);

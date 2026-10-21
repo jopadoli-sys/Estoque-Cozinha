@@ -20,7 +20,8 @@ class UsuarioController extends Controller
             'cpf' => 'required|string|max:14|unique:usuario',
             'data_nascimento' => 'required',
             'email' => 'required|string|email|max:255|unique:usuario,email',
-            'nif' => 'required|string|max:255',
+            'senha' => 'required|string',
+          
         ]);
 
         try {
@@ -29,7 +30,7 @@ class UsuarioController extends Controller
             $usuario->cpf = $request->cpf;
             $usuario->data_nascimento = $request->data_nascimento;
             $usuario->email = $request->email;
-            $usuario->nif = $request->nif;
+            $usuario->senha = Hash::make($request->senha);
 
             $usuario->save();
 
@@ -46,6 +47,7 @@ class UsuarioController extends Controller
         ]);
 
         $usuario = Usuario::find($request->id);
+        $usuario ->funcionario;
 
         if ($usuario) {
             return response()->json(['usuario' => $usuario, 'erro' => 'n'], 200);

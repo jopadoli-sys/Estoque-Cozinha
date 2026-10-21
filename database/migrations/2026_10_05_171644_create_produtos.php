@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('quantidade');
             $table->date('validade');
             $table->text('descricao');
+            $table->unsignedBigInteger('usuario_id')->nullable();
+            $table->foreign('usuario_id')->references('id')->on('usuario')->onDelete('set null');
             $table->timestamps();
         });
     }

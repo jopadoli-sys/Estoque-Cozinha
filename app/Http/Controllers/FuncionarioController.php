@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Usuario;
+use App\Models\Funcionario;
 use Illuminate\Support\Facades\Hash;
 
 class FuncionarioController extends Controller
@@ -21,6 +21,7 @@ class FuncionarioController extends Controller
             'data_nascimento' => 'required',
             'email' => 'required|string|email|max:255|unique:usuario,email',
             'nif' => 'required|string|max:255',
+            'senha' => 'required|string',
         ]);
 
         try {
@@ -30,6 +31,7 @@ class FuncionarioController extends Controller
             $funcionario->data_nascimento = $request->data_nascimento;
             $funcionario->email = $request->email;
             $funcionario->nif = $request->nif;
+            $funcionario->senha = Hash::make($request->senha);
 
             $funcionario->save();
 
